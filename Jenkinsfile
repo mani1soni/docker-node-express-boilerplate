@@ -19,21 +19,21 @@ pipeline{
         stage("backup"){
             steps{
                 sh '''
-                bash stage-backup.sh  docker-node-express-boilerplate_app
+                sudo bash stage-backup.sh  docker-node-express-boilerplate_app
                 ''' 
             }
         }
         stage("build and deploy"){
             steps{
                 sh '''
-                bash stage-build-and-deploy.sh  docker-node-express-boilerplate_app  5000
+                sudo bash stage-build-and-deploy.sh  docker-node-express-boilerplate_app  5000
                 '''
             } 
         }
         stage("push to ECR"){
             steps{
                 sh '''
-                bash push.sh  docker-node-express-boilerplate_app  manisomanish/docker-node-express-boilerplate_app_1 
+                sudo bash push.sh  docker-node-express-boilerplate_app  manisomanish/docker-node-express-boilerplate_app
                 '''
             }
         }
