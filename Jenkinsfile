@@ -20,7 +20,8 @@ pipeline{
             steps{
                 //sh '''
                 //bash stage-backup.sh  docker-node-express-boilerplate_app
-                //''' 
+                //'''
+                echo "done" 
             }
         }
         stage("build and deploy"){
