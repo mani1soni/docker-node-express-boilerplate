@@ -18,8 +18,9 @@ pipeline{
         }
         stage("backup"){
             steps{
-                sh label: '', script: 'stage-backup.sh  docker-node-express-boilerplate_app'
-                 
+                sh '''
+                sudo bash stage-backup.sh  docker-node-express-boilerplate_app
+                ''' 
             }
         }
         stage("build and deploy"){
