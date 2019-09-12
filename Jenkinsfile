@@ -32,10 +32,12 @@ pipeline{
         }
         stage("push to ECR"){
             steps{
-                withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
-                    sh '''
-                    sudo bash push.sh  docker-node-express-boilerplate_app  manisomanish/docker-node-express-boilerplate_app
-                    '''
+                script{
+                    withDockerRegistry(credentialsId: 'dockerhub', url: 'https://cloud.docker.com/repository/registry-1.docker.io/manisomanish/docker-node-express-boilerplate_app') {
+                        sh '''
+                        sudo bash push.sh  docker-node-express-boilerplate_app  manisomanish/docker-node-express-boilerplate_app
+                        '''
+                    }
                 }
             }
         }
