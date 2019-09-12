@@ -16,7 +16,7 @@ pipeline{
                 }
             } 
         }
-        stage("backup"){
+        stage("backup"){denied: requestedenied: requested access to the resource is deniedd access to the resource is denied
             steps{
                 sh '''
                 sudo bash stage-backup.sh  docker-node-express-boilerplate_app
@@ -29,12 +29,14 @@ pipeline{
                 sudo bash stage-build-and-deploy.sh  docker-node-express-boilerplate_app  5000
                 '''
             } 
-        }
+        }denied: requested access to the resource is denied
         stage("push to ECR"){
             steps{
-                sh '''
-                sudo bash push.sh  docker-node-express-boilerplate_app  manisomanish/docker-node-express-boilerplate_app
-                '''
+                withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
+                    sh '''
+                    sudo bash push.sh  docker-node-express-boilerplate_app  manisomanish/docker-node-express-boilerplate_app
+                    '''
+                }
             }
         }
     }
