@@ -26,14 +26,14 @@ pipeline{
         stage("build and deploy"){
             steps{
                 sh '''
-                sh stage-build-and-deploy.sh docker-node-express-boilerplate_app_1  5000
+                sudo sh stage-build-and-deploy.sh docker-node-express-boilerplate_app_1  5000
                 '''
             } 
         }
         stage("push to ECR"){
             steps{
                 sh '''
-                sh push.sh docker-node-express-boilerplate_app_1  manisomanish/docker-node-express-boilerplate_app_1 
+                sudo sh push.sh docker-node-express-boilerplate_app_1  manisomanish/docker-node-express-boilerplate_app_1 
                 '''
             }
         }
