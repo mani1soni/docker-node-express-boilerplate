@@ -1,5 +1,5 @@
 #!/bin/bash 
-cd ~/
+cd ~/savetest
 mkdir -p Staging/backup
 cd Staging/backup
 
