@@ -19,14 +19,14 @@ pipeline{
         stage("backup"){
             steps{
                 sh '''
-                sudo bash stage-backup.sh  docker-node-express-boilerplate_app
+                bash stage-backup.sh  docker-node-express-boilerplate_app
                 ''' 
             }
         }
         stage("build and deploy"){
             steps{
                 sh '''
-                sudo bash stage-build-and-deploy.sh  docker-node-express-boilerplate_app  5000
+                bash stage-build-and-deploy.sh  docker-node-express-boilerplate_app  5000
                 '''
             } 
         }
@@ -35,7 +35,7 @@ pipeline{
                 script{
                     withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
                         sh '''
-                        sudo bash push.sh  docker-node-express-boilerplate_app  manisomanish/docker-node-express-boilerplate_app
+                        bash push.sh  docker-node-express-boilerplate_app  manisomanish/docker-node-express-boilerplate_app
                         '''
                     }
                 }
