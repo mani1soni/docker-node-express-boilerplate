@@ -20,21 +20,21 @@ pipeline{
         stage("backup"){
             steps{
                 sh '''
-                sh stage-backup.sh gateway
+                sh stage-backup.sh docker-node-express-boilerplate_app_1 
                 ''' 
             }
         }
         stage("build and deploy"){
             steps{
                 sh '''
-                sh stage-build-and-deploy.sh gateway 5000
+                sh stage-build-and-deploy.sh docker-node-express-boilerplate_app_1  5000
                 '''
             } 
         }
         stage("push to ECR"){
             steps{
                 sh '''
-                sh push.sh gateway manisomanish/gateway
+                sh push.sh docker-node-express-boilerplate_app_1  manisomanish/docker-node-express-boilerplate_app_1 
                 '''
             }
         }
@@ -47,9 +47,6 @@ pipeline{
             to: 'manish.soni@techifysolutions.com'
         }
         failure {
-            sh '''
-            sh stage-rollback.sh gateway 5000
-            '''
             emailext attachLog: true, body: '''$DEFAULT_CONTENT  test failed and rollback initiated''', subject: '$DEFAULT_SUBJECT', to: 'manish.soni@techifysolutions.com'
         }
     }
