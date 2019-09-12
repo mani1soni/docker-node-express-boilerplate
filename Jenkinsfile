@@ -7,7 +7,7 @@ pipeline{
         stage("test"){
             steps{
                 sh '''
-                npm i
+                echo "ok"
                 '''
             }
             post {
