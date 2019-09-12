@@ -1,4 +1,4 @@
-#!/bin bash 
+#!/bin/bash 
 cd ~/
 mkdir -p Staging/backup
 cd Staging/backup
