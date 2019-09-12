@@ -8,7 +8,6 @@ pipeline{
             steps{
                 sh '''
                 npm i
-                npm test
                 '''
             }
             post {
