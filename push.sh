@@ -1,5 +1,4 @@
 #!/bin/bash
-#$(aws ecr get-login --no-include-email --region ap-south-1)
 
 #tagging the image with registry name
 docker tag $1:latest $2-${NODE_ENV}:latest
