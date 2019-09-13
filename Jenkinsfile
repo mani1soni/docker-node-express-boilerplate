@@ -50,9 +50,6 @@ pipeline{
             to: 'manish.soni@techifysolutions.com'
         }
         failure {
-            sh '''
-            sh stage-rollback.sh docker-node-express-boilerplate_app 5000
-            '''
             emailext attachLog: true, body: '''$DEFAULT_CONTENT  test failed and rollback initiated''', subject: '$DEFAULT_SUBJECT', to: 'manish.soni@techifysolutions.com'
         }
     }
