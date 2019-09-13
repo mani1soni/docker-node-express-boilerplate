@@ -32,13 +32,9 @@ pipeline{
         }
         stage("push to ECR"){
             steps{
-                script{
-                    withDockerRegistry(credentialsId: 'ecr:ap-south-1:aws ecr', url: '981144953497.dkr.ecr.ap-south-1.amazonaws.com') {
-                        sh '''
-                        bash push.sh  docker-node-express-boilerplate_app  manisomanish/docker-node-express-boilerplate_app
-                        '''
-                    }
-                }
+                sh '''
+                bash push.sh  docker-node-express-boilerplate_app  981144953497.dkr.ecr.ap-south-1.amazonaws.com/docker-node-express-boilerplate_app
+                '''
             }
         }
     }
