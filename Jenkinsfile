@@ -35,7 +35,7 @@ pipeline{
                 script{
                     withDockerRegistry(credentialsId: 'ecr:ap-south-1:aws ecr', url: 'https://981144953497.dkr.ecr.ap-south-1.amazonaws.com') {
                         sh '''
-                        bash push.sh  docker-node-express-boilerplate_app  981144953497.dkr.ecr.ap-south-1.amazonaws.com/docker-node-express-boilerplate_app
+                        bash push.sh  docker-node-express-boilerplate_app  981144953497.dkr.ecr.ap-south-1.amazonaws.com/${NODE_ENV}-docker-node-express-boilerplate_app
                         '''
                     }
                 }
