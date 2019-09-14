@@ -19,8 +19,8 @@ fi
 if [ ! "$(docker images | grep $1-jenkins:$BUILD_ID )" ]; then
     echo "image does not exist"
 else
-    echo "image exists"
-	docker rmi $1-jenkins:$BUILD_ID
+echo "image exists"
+docker rmi $1-jenkins:$BUILD_ID
 fi
 
 
