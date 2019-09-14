@@ -16,7 +16,7 @@ echo "container exists"
 docker rm -f $1-jenkins
 fi
 
-if [ ! "$(docker images | grep $1-jenkins:$BUILD_ID )" ]; then
+if [ ! "$(docker images | grep $1-jenkins )" ]; then
     echo "image does not exist"
 else
 echo "image exists"
