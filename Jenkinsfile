@@ -1,3 +1,4 @@
+//docker exec docker-node-express-boilerplate_app npm test /home/nodejs/app
 pipeline{
     agent any
     environment{
@@ -7,7 +8,7 @@ pipeline{
         stage("test"){
             steps{
                 sh '''
-                echo "ok"
+                bash testapp.sh  docker-node-express-boilerplate_app  5000
                 '''
             }
             post {
@@ -26,8 +27,7 @@ pipeline{
         stage("build and deploy"){
             steps{
                 sh '''
-                bash stage-build-and-deploy.sh  docker-node-express-boilerplate_app  5000
-                docker exec docker-node-express-boilerplate_app npm test /home/nodejs/app
+                bash testecr.sh  docker-node-express-boilerplate_app  5000
                 '''
             } 
         }
