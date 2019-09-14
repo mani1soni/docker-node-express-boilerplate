@@ -1,4 +1,20 @@
 #!/bin/bash
+
+if [ ! "$(docker ps -a | grep $1-jenkins )" ]; then
+echo "container does not exist"
+else
+echo "container exists"
+docker rm -f $1-jenkins
+fi
+
+if [ ! "$(docker images | grep $1-jenkins )" ]; then
+    echo "image does not exist"
+else
+echo "image exists"
+docker rmi $1-jenkins:$BUILD_ID
+fi
+
+
 if [[  "$(docker images | grep $1 )" ]] && [[ "$(docker ps |grep $1)" ]]; then
     echo "image and container exist, no need to rollback"
 fi
@@ -14,18 +30,5 @@ docker load < $1.tar
 docker start $1
 fi
 
-if [ ! "$(docker ps -a | grep $1-jenkins )" ]; then
-echo "container does not exist"
-else
-echo "container exists"
-docker rm -f $1-jenkins
-fi
-
-if [ ! "$(docker images | grep $1-jenkins )" ]; then
-    echo "image does not exist"
-else
-echo "image exists"
-docker rmi $1-jenkins:$BUILD_ID
-fi
 
 
