@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [[  "$(docker images | grep $1 )" ]] && [[ "$(docker ps |grep $1)" ]]; then
     echo "image and container exist, no need to rollback"
 fi
@@ -27,5 +28,4 @@ else
 echo "image exists"
 docker rmi $1-jenkins:$BUILD_ID
 fi
-
 
