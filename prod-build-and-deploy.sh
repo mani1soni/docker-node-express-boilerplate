@@ -35,7 +35,7 @@ if [ $BUILD = "start" ]; then
     echo "container and image removed run build steps"
     docker tag $2-jenkins:latest $1:latest
     docker run -d -p $3:$3 -v /home/ubuntu/logs:/root/.pm2/logs --name $1 $1
-    docker rmi $2-jenkins
+    docker rmi $2 $2-jenkins 
 else
     echo "container or image does not removed build steps are not going to run"
 fi
