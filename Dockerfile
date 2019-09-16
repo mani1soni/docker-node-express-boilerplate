@@ -13,6 +13,7 @@ USER nodejs
 RUN mkdir -p /home/nodejs/app
 WORKDIR /home/nodejs/app
 COPY . /home/nodejs/app
+COPY .env /home/nodejs/app
 
 RUN npm install --production --quiet
 
