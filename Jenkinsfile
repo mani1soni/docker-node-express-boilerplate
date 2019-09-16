@@ -8,7 +8,7 @@ pipeline{
         stage("test"){
             steps{
                 sh '''
-                bash testapp.sh  docker-node-express-boilerplate_app  5000
+                bash testapp.sh  docker-node-express-boilerplate_app 
                 '''
             }
             post {
