@@ -1,0 +1,36 @@
+--->    Staging  <-----
+
+1. git pull from development branch.
+
+2. Build a docker image with Jenkins's name and tagged it with current build number.
+
+3. If test failed----->   Notify Dev and Ops team.
+
+---> Delete test image and conatainer.
+
+
+4. Else:---->
+	-> Took backup of current image in local.
+
+	-> Delete current running image and container.
+
+	-> tagged former tested image to project name(current image). 
+
+	-> Launch new conatainer from tagged image.
+
+	-> delete the unused tested image and container.
+	
+    -----> Push the current image to ECR with (i) latest tag
+					      (ii) Jenkins-build-number
+
+---------> generate Success Email for Dev and Ops team.	
+
+	
+
+ 
+
+
+
+
+
+
