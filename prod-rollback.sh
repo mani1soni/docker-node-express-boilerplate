@@ -1,4 +1,8 @@
 #!/bin/bash
+if [[  "$(docker images | grep $1 )" ]] && [[ "$(docker ps |grep $1)" ]]; then
+    echo "image and container exist, no need to rollback"
+fi
+exit 0
 
 #pulling backup image from registry 
 docker pull $2:latest
