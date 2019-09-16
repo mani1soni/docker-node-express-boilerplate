@@ -1,0 +1,12 @@
+----> Production <-----------
+
+1. Git pull from release branch.
+
+2. Took backup of current running image.(name appended {Node environment} and backup).
+
+3. Build Stage--> pull the staging image from ecr and build a new image with it and copy env file and build a new image with jenkins name
+
+
+4. Deploy Stage--> delete the current running image and container and tagged jenkins image as project name and delete former unused images.
+
+5. if any failiure occurs then rollback backuped image
